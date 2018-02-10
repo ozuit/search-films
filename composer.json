@@ -1,0 +1,36 @@
+{
+    "name": "khanhicetea/trada",
+    "description": "Trada Web Framework - Cho Tôi Một Ly Trà Đá",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "type": "project",
+    "authors": [
+        {
+            "name": "KhanhIceTea",
+            "email": "khanhicetea@gmail.com"
+        }
+    ],
+    "require": {
+        "sifoni/sifoni": "~4.0",
+        "ivoba/console-service-provider": "~3.0",
+        "vlucas/phpdotenv": "~2.3",
+        "robmorgan/phinx": "~0.6",
+        "ezyang/htmlpurifier": "~4.7"
+    },
+    "require-dev": {
+        "symfony/browser-kit": "~2.7|3.0.*",
+        "symfony/css-selector": "~2.7|3.0.*"
+    },
+    "extra": {
+        "sifoni-app-dir": "app",
+        "sifoni-web-dir": "web",
+        "sifoni-test-dir": "test"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Controller\\": "app/controller/",
+            "App\\Model\\": "app/model/",
+            "App\\Command\\": "app/command/"
+        }
+    }
+}
