@@ -2,6 +2,6 @@
 
 return array(
     '/' => array(
-        '/' => 'HomeController:index:home::get',
+        '/' => ['HomeController', 'index', 'home', [], 'get|post'],
     ),
 );

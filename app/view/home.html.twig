@@ -7,15 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="style/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <script src="script/main.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="script/main.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="search-component">
-            <form class="form-inline">
-                <input class="form-control" placeholder="Enter your require for the film ..." />
-                <div class="btn btn-primary">SEARCH</div>
+            <form method="POST">
+                <div id="get-genre" class="form-inline">
+                    <input name="genre" oninput="handleChangeInput(this)" class="form-control" placeholder="Enter your favorite genre ..." />
+                    <button type="button" class="btn btn-primary disable">NEXT</button>
+                </div>
+                <div id="get-actor" class="form-inline hidden">
+                    <input name="actor" oninput="handleChangeInput(this)" class="form-control" placeholder="Enter your favorite actor ..." />
+                    <button type="submit" class="btn btn-primary disable">SEARCH</button>
+                </div>
             </form>
         </div>
         <div class="row">

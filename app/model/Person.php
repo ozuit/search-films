@@ -7,8 +7,13 @@ class Person extends Base
 
     protected $primaryKey = 'Id';
 
-    public function movie()
+    public function actor_movie()
     {
         return $this->belongsToMany('App\Model\Movie', 'Actor', 'Person_id', 'Movie_id')->withPivot('CharacterName');
+    }
+    
+    public function director_movie()
+    {
+        return $this->belongsToMany('App\Model\Movie', 'Director', 'Person_id', 'Movie_id');
     }
 }

@@ -4,13 +4,18 @@ namespace App\Controller;
 
 use Sifoni\Controller\Base;
 use App\Model\Movie;
+use App\Model\Person;
 
 class HomeController extends Base
 {
     public function indexAction()
     {
-        $data = [];
-        $data['movies'] = Movie::orderBy('Rating', 'desc')->limit(8)->get();
+        $data['movies'] = [];
+        if ($postData = $this->getPostData()) {
+            $data['movies'] = Movie::whereHas('actor', function($query) use ($postData) {
+                $query->where('Name', 'like', $postData['actor']);
+            })->orderBy('Rating', 'desc')->limit(8)->get();
+        }
 
         return $this->render('home.html.twig', $data);
     }
