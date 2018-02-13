@@ -11,10 +11,12 @@ class HomeController extends Base
     {
         $data['movies'] = [];
         if ($postData = $this->getPostData()) {
-            $data['movies'] = Movie::whereHas('genre', function($query) use ($postData) {
-                $query->where('Name', 'like', trim($postData['genre']));
-            })->whereHas('actor', function($query) use ($postData) {
-                $query->where('Name', 'like', trim($postData['actor']));
+            $genre_query = explode('; ', trim($postData['genre']));
+            $actor_query = explode('; ', trim($postData['actor']));
+            $data['movies'] = Movie::whereHas('genre', function($query) use ($genre_query) {
+                $query->whereIn('Name', $genre_query);
+            })->whereHas('actor', function($query) use ($actor_query) {
+                $query->where('Name', $actor_query);
             })->orderBy('Rating', 'desc')->limit(6)->get();
         }
 
