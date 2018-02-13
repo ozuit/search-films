@@ -16,6 +16,11 @@ class Movie extends Base
     {
         return $this->belongsToMany('App\Model\Person', 'Director', 'Movie_id', 'Person_id');
     }
+    
+    public function genre()
+    {
+        return $this->belongsToMany('App\Model\Genre', 'Movie_Genre', 'Movie_id', 'Genre_id');
+    }
 
     public function getMainActor()
     {
@@ -23,6 +28,16 @@ class Movie extends Base
         $result = [];
         foreach($persons as $person) {
             $result[] = $person->Name; 
+        }
+        return implode('; ', $result);
+    }
+
+    public function getGenre()
+    {
+        $genres = $this->genre->all();
+        $result = [];
+        foreach($genres as $genre) {
+            $result[] = $genre->Name;
         }
         return implode('; ', $result);
     }

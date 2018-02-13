@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use Sifoni\Controller\Base;
 use App\Model\Movie;
-use App\Model\Person;
 
 class HomeController extends Base
 {
@@ -12,9 +11,11 @@ class HomeController extends Base
     {
         $data['movies'] = [];
         if ($postData = $this->getPostData()) {
-            $data['movies'] = Movie::whereHas('actor', function($query) use ($postData) {
-                $query->where('Name', 'like', $postData['actor']);
-            })->orderBy('Rating', 'desc')->limit(8)->get();
+            $data['movies'] = Movie::whereHas('genre', function($query) use ($postData) {
+                $query->where('Name', 'like', trim($postData['genre']));
+            })->whereHas('actor', function($query) use ($postData) {
+                $query->where('Name', 'like', trim($postData['actor']));
+            })->orderBy('Rating', 'desc')->limit(6)->get();
         }
 
         return $this->render('home.html.twig', $data);
