@@ -1,5 +1,6 @@
 <?php
 namespace App\Model;
+use Sifoni\Model\DB;
 
 class Movie extends Base
 {
@@ -34,10 +35,20 @@ class Movie extends Base
 
     public function getGenre()
     {
-        $genres = $this->genre->all();
+        $genres = $this->genre()->distinct()->get();
         $result = [];
         foreach($genres as $genre) {
             $result[] = $genre->Name;
+        }
+        return implode('; ', $result);
+    }
+    
+    public function getDirector()
+    {
+        $persons = $this->director()->distinct()->get();
+        $result = [];
+        foreach($persons as $person) {
+            $result[] = $person->Name; 
         }
         return implode('; ', $result);
     }

@@ -13,18 +13,22 @@
         <div class="search-component">
             <form method="POST">
                 <div id="get-genre" class="form-inline">
-                    <input name="genre" oninput="handleChangeInput(this)" class="form-control" placeholder="Enter your favorite genre (Ex: Crime; Drama)" />
-                    <button type="button" class="btn btn-primary disable">NEXT</button>
+                    <input name="genre" class="form-control" placeholder="What is your favorite genre? (Ex: Crime; Drama; Action; Adventure; Biography; Comedy)" />
+                    <button type="button" class="btn btn-primary">NEXT</button>
+                </div>
+                <div id="get-director" class="form-inline hidden">
+                    <input name="director" class="form-control" placeholder="What is your favorite director? (Ex: Frank Darabont; Christopher Nolan; Quentin Tarantino; Peter Jackson; Charles Chaplin)" />
+                    <button type="button" class="btn btn-primary">NEXT</button>
                 </div>
                 <div id="get-actor" class="form-inline hidden">
-                    <input name="actor" oninput="handleChangeInput(this)" class="form-control" placeholder="Enter your favorite actor (Ex: Sam Rockwell)" />
-                    <button type="submit" class="btn btn-primary disable">SEARCH</button>
+                    <input name="actor" class="form-control" placeholder="What is your favorite actor? (Ex: Sam Rockwell; Bob Gunton; Mark Rolston; John Marley; Nestor Carbonell)" />
+                    <button type="submit" class="btn btn-primary">SEARCH</button>
                 </div>
             </form>
         </div>
         <div class="row">
             <div class="list-movie col-md-6">
-                {% for movie in movies|slice(0, 4) %}
+                {% for movie in movies|slice(0, 3) %}
                     <div class="movie-item row">
                         <div class="col-md-3">
                             <img src="{{ movie.Img }}" class="img-thumbnail">
@@ -32,6 +36,7 @@
                         <div class="col-md-9">
                             <h4><a target="blank" href="{{ movie.ImdbLink }}">{{ movie.Title }}</a> ({{ movie.Rating }}/10)</h4>
                             <p class="genre">Genre: {{ movie.getGenre() }}</p>
+                            <p class="director">Director: {{ movie.getDirector() }}</p>
                             <p class="actor">Main actor: {{movie.getMainActor()}}</p>
                             <p class="synopsis">Synopsis: {{ movie.Synopsis }}</p>
                         </div>
@@ -39,7 +44,7 @@
                 {% endfor %}
             </div>
             <div class="list-movie col-md-6">
-                {% for movie in movies|slice(4, 4) %}
+                {% for movie in movies|slice(3, 3) %}
                     <div class="movie-item row">
                         <div class="col-md-3">
                             <img src="{{ movie.Img }}" class="img-thumbnail">
@@ -47,6 +52,7 @@
                         <div class="col-md-9">
                             <h4><a target="blank" href="{{ movie.ImdbLink }}">{{ movie.Title }}</a> ({{ movie.Rating }}/10)</h4>
                             <p class="genre">Genre: {{ movie.getGenre() }}</p>
+                            <p class="director">Director: {{ movie.getDirector() }}</p>
                             <p class="actor">Main actor: {{movie.getMainActor()}}</p>
                             <p class="synopsis">Synopsis: {{ movie.Synopsis }}</p>
                         </div>

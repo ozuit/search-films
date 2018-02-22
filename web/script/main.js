@@ -16,15 +16,18 @@ $(document).ready(function() {
         }
     });
     $('#get-genre').on('click', 'button', function() {
-        if ($('#get-genre input').val()) {
-            $('.form-inline').removeClass('hidden');
-            $('#get-genre').addClass('hidden');
-        }
+        $('.form-inline').removeClass('hidden');
+        $('#get-genre').addClass('hidden');
+        $('#get-actor').addClass('hidden');
     }) 
     $('#get-actor').on('click', 'button', function() {
-        if ($('#get-actor input').val()) {
-            $('.form-inline').removeClass('hidden');
-            $('#get-actor').addClass('hidden');
-        }
+        $('.form-inline').removeClass('hidden');
+        $('#get-director').addClass('hidden');
+        $('#get-actor').addClass('hidden');
+    }) 
+    $('#get-director').on('click', 'button', function() {
+        $('.form-inline').removeClass('hidden');
+        $('#get-genre').addClass('hidden');
+        $('#get-director').addClass('hidden');
     }) 
 });
