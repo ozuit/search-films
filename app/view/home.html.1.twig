@@ -11,14 +11,18 @@
 <body>
     <div class="container">
         <div class="search-component">
-            <form method="POST" id="frm-search-movies">
-                <input type="hidden" name="genre" value="" id="genre-input" />
-                <input type="hidden" name="actor" value="" id="actor-input" />
-                <input type="hidden" name="director" value="" id="director-input" />
-                <div class="form-inline search-control">
-                    <label>---- Enter your require for the film which you want to see ----</label>
-                    <input id="query-search" class="form-control" placeholder="Ex: I want to see a comedy starring Charles Chaplin" />
-                    <button type="button" class="btn btn-primary" id="search-movies">SEARCH</button>
+            <form method="POST">
+                <div id="get-genre" class="form-inline">
+                    <input name="genre" class="form-control" placeholder="What is your favorite genre? (Ex: Crime; Drama; Action; Adventure; Biography; Comedy)" />
+                    <button type="button" class="btn btn-primary">NEXT</button>
+                </div>
+                <div id="get-director" class="form-inline hidden">
+                    <input name="director" class="form-control" placeholder="What is your favorite director? (Ex: Frank Darabont; Christopher Nolan; Quentin Tarantino; Peter Jackson; Charles Chaplin)" />
+                    <button type="button" class="btn btn-primary">NEXT</button>
+                </div>
+                <div id="get-actor" class="form-inline hidden">
+                    <input name="actor" class="form-control" placeholder="What is your favorite actor? (Ex: Sam Rockwell; Bob Gunton; Mark Rolston; John Marley; Nestor Carbonell)" />
+                    <button type="submit" class="btn btn-primary">SEARCH</button>
                 </div>
             </form>
         </div>
@@ -60,9 +64,5 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="script/main.js"></script>
-    <script type="text/javascript">
-        window.genre_datas = {{ genres|json_encode|raw }}
-        window.ajax_person_link = "{{ url('ajax_get_person') }}"
-    </script>
 </body>
 </html>

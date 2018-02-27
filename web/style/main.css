@@ -11,11 +11,11 @@
     transform: translate(-50%, -50%);
 }
 .search-component {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 .search-component .form-control {
     width: 90% !important;
-    margin: 0 10px;
+    margin-right: 10px;
 }
 .list-movie .movie-item {
     margin-bottom: 20px;
@@ -36,4 +36,20 @@
 .list-movie .movie-item p.synopsis {
     height: 45px;
     overflow: hidden;
+}
+.search-component .search-control {
+    border: 1px solid #ccc;
+    padding: 10px;
+    padding-top: 0;
+    border-radius: 5px;
+}
+.search-component .search-control label {
+    text-align: center;
+    width: 100%;
+    font-weight: 500;
+    color: #555;
+    padding: 5px;
+}
+.search-component .search-control button {
+    width: 9%;
 }
