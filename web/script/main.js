@@ -31,8 +31,12 @@ $(document).ready(function() {
             url: window.ajax_person_link,
             type: 'post',
             data: { 'query': query },
-            success: function (actors) {
-                $('#actor-input').val(actors);
+            success: function (persons) {
+                if (query.indexOf('director') != -1) {
+                    $('#director-input').val(persons)   
+                } else {
+                    $('#actor-input').val(persons);
+                }
                 $('#frm-search-movies').submit();
             }
         });

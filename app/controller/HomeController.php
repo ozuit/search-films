@@ -54,7 +54,7 @@ class HomeController extends Base
                 if (count(array_keys($person_name, $name)) > 1 && !in_array($name, $result)) {
                     $result[] = $name;
                 }
-            }
+            }         
 
             return implode(';', $result);
         } else {
